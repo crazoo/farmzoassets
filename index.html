@@ -1,51 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Super Enhanced Image Display</title>
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Image Gallery with Centered Popup</title>
+  <link rel="stylesheet" href="styles.css"/>
 </head>
 <body>
-    <div class="image-container">
-        <div class="image-wrapper">
-            <img src="ad1.png" alt="Image 1" class="image" />
-            <div class="image-caption">Image 1</div>
-        </div>
-        <div class="image-wrapper">
-            <img src="ad2.png" alt="Image 2" class="image" />
-            <div class="image-caption">Image 2</div>
-        </div>
-        <div class="image-wrapper">
-            <img src="ad3.png" alt="Image 3" class="image" />
-            <div class="image-caption">Image 3</div>
-        </div>
-        <div class="image-wrapper">
-            <img src="ad4.png" alt="Image 4" class="image" />
-            <div class="image-caption">Image 4</div>
-        </div>
-    </div>
-<!-- Lightbox Modal -->
-<div id="lightboxModal" class="lightbox-modal">
-    <span class="close" onclick="closeModal()">&times;</span>
-    <img class="modal-content" id="modalImage" />
-</div>
+  <div class="image-container">
+    <div class="image-wrapper"><img src="ad1.png" alt="Image 1" onclick="openModal(this.src)" /></div>
+    <div class="image-wrapper"><img src="ad2.png" alt="Image 2" onclick="openModal(this.src)" /></div>
+    <div class="image-wrapper"><img src="ad3.png" alt="Image 3" onclick="openModal(this.src)" /></div>
+    <div class="image-wrapper"><img src="ad4.png" alt="Image 4" onclick="openModal(this.src)" /></div>
+  </div>
 
-<script>
-    const images = document.querySelectorAll('.image');
-    const modal = document.getElementById('lightboxModal');
-    const modalImage = document.getElementById('modalImage');
+  <div id="lightbox" class="lightbox" onclick="closeModal()">
+    <img id="lightbox-img" />
+  </div>
 
-    images.forEach(image => {
-        image.addEventListener('click', function() {
-            modal.style.display = "block";
-            modalImage.src = this.src;
-        });
-    });
+  <script>
+    function openModal(src) {
+      const lightbox = document.getElementById('lightbox');
+      const lightboxImg = document.getElementById('lightbox-img');
+      lightbox.style.display = 'flex';
+      lightboxImg.src = src;
+    }
 
     function closeModal() {
-        modal.style.display = "none";
+      document.getElementById('lightbox').style.display = 'none';
     }
-</script>
+  </script>
 </body>
 </html>
