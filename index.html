@@ -25,5 +25,27 @@
             <div class="image-caption">Image 4</div>
         </div>
     </div>
+<!-- Lightbox Modal -->
+<div id="lightboxModal" class="lightbox-modal">
+    <span class="close" onclick="closeModal()">&times;</span>
+    <img class="modal-content" id="modalImage" />
+</div>
+
+<script>
+    const images = document.querySelectorAll('.image');
+    const modal = document.getElementById('lightboxModal');
+    const modalImage = document.getElementById('modalImage');
+
+    images.forEach(image => {
+        image.addEventListener('click', function() {
+            modal.style.display = "block";
+            modalImage.src = this.src;
+        });
+    });
+
+    function closeModal() {
+        modal.style.display = "none";
+    }
+</script>
 </body>
 </html>
